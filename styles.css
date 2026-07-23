@@ -1,0 +1,1336 @@
+/* ==========================================================================
+   HYW_JON TUTORÍAS - STYLESHEET v1.2 (Univ. de Pilar Focus)
+   Aesthetic Fusion: Windows XP + Dark Souls + Real Manga (Takehiko Inoue)
+   ========================================================================== */
+
+/* --- CSS VARIABLES & TOKENS --- */
+:root {
+    /* Base & Dark Souls Dark Mode */
+    --ds-bg-dark: #090a0e;
+    --ds-card-bg: #11131a;
+    --ds-border-gold: #c5a059;
+    --ds-gold-glow: rgba(197, 160, 89, 0.4);
+    --ds-red-hp: #9e1b1b;
+    --ds-blue-fp: #1b539e;
+    --ds-green-stamina: #1b8a43;
+    --ds-ember-orange: #ff5500;
+    --ds-ember-glow: rgba(255, 85, 0, 0.5);
+    
+    /* Windows XP Palette */
+    --xp-title-blue-top: #0058e6;
+    --xp-title-blue-bottom: #2576f7;
+    --xp-window-bg: #ece9d8;
+    --xp-border-dark: #00138c;
+    --xp-btn-green-top: #388e3c;
+    --xp-btn-green-bottom: #1b5e20;
+    --xp-btn-gray-top: #ffffff;
+    --xp-btn-gray-bottom: #d6d3ce;
+    --xp-taskbar-bg: #1e52d8;
+
+    /* Manga Real Ink Palette */
+    --manga-ink-black: #0c0c0e;
+    --manga-paper-white: #f5f4ef;
+    --manga-hatch-pattern: repeating-linear-gradient(45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 2px, transparent 2px, transparent 8px);
+
+    /* Fonts */
+    --font-heading: 'Cinzel', serif;
+    --font-manga: 'Permanent Marker', cursive;
+    --font-pixel: 'VT323', monospace;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* --- GLOBAL RESET & BASE STYLES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--ds-bg-dark);
+    color: #e2e8f0;
+    font-family: var(--font-body);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+
+.text-gold {
+    color: var(--ds-border-gold);
+}
+
+/* Canvas para Partículas de Ceniza */
+#emberCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Manga Overlay Texture */
+.manga-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: var(--manga-hatch-pattern);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.7;
+}
+
+/* Container de Escritorio */
+.desktop-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* ==========================================================================
+   WINDOWS XP WINDOW FRAME & COMPONENTS
+   ========================================================================== */
+
+.xp-window {
+    background-color: var(--xp-window-bg);
+    border: 3px solid var(--xp-border-dark);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(255, 85, 0, 0.2);
+    overflow: hidden;
+    color: #1a1a1a;
+}
+
+/* Titlebar XP */
+.xp-title-bar {
+    background: linear-gradient(180deg, var(--xp-title-blue-top) 0%, var(--xp-title-blue-bottom) 100%);
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    border-bottom: 1px solid #00227b;
+}
+
+.xp-title-bar.small {
+    padding: 4px 8px;
+    font-size: 0.85rem;
+}
+
+.xp-title-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.xp-window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.win-btn {
+    width: 21px;
+    height: 21px;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset -1px -1px 2px rgba(0,0,0,0.5);
+}
+
+.win-min, .win-max {
+    background: linear-gradient(180deg, #3c8df6, #0050d4);
+    color: white;
+}
+
+.win-close {
+    background: linear-gradient(180deg, #e76646, #c22909);
+    color: white;
+}
+
+.win-btn:hover {
+    filter: brightness(1.2);
+}
+
+/* Menu Bar */
+.xp-menu-bar {
+    background-color: #f0f0e8;
+    padding: 4px 12px;
+    border-bottom: 1px solid #d0d0c8;
+    display: flex;
+    gap: 18px;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.xp-menu-bar span {
+    cursor: pointer;
+}
+
+.xp-menu-bar span:hover {
+    background-color: #0a246a;
+    color: white;
+}
+
+.souls-level-tag {
+    margin-left: auto;
+    font-family: var(--font-pixel);
+    background-color: #1a1a24;
+    color: var(--ds-border-gold);
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Body Interno de la Ventana */
+.xp-window-body {
+    background-color: var(--ds-bg-dark);
+    color: #e2e8f0;
+    padding: 24px;
+}
+
+/* Reusable XP Inset Panel */
+.xp-inset {
+    background-color: var(--ds-card-bg);
+    border: 2px inset #555;
+    border-radius: 4px;
+    padding: 18px;
+}
+
+.xp-divider {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ds-border-gold), transparent);
+    margin: 40px 0;
+}
+
+/* Status Bar XP */
+.xp-status-bar {
+    background-color: #ece9d8;
+    border-top: 1px solid #999;
+    padding: 4px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #444;
+}
+
+/* ==========================================================================
+   DARK SOULS HUD (HP / FP / STAMINA / BONFIRE)
+   ========================================================================== */
+
+.souls-hud {
+    background: linear-gradient(180deg, rgba(17,19,26,0.95), rgba(9,10,14,0.95));
+    border: 1px solid var(--ds-border-gold);
+    padding: 14px 20px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.hud-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+    max-width: 550px;
+}
+
+.hud-bar {
+    height: 16px;
+    background-color: #1a1a24;
+    border: 1px solid #444;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-label {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+.bar-value {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.65rem;
+    font-family: var(--font-pixel);
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    z-index: 2;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.hp-bar .bar-fill { background: linear-gradient(90deg, #7a1212, var(--ds-red-hp)); }
+.fp-bar .bar-fill { background: linear-gradient(90deg, #12387a, var(--ds-blue-fp)); }
+.stamina-bar .bar-fill { background: linear-gradient(90deg, #12632e, var(--ds-green-stamina)); }
+
+.souls-covenant {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.covenant-badge {
+    background-color: rgba(255, 85, 0, 0.15);
+    border: 1px solid var(--ds-ember-orange);
+    color: var(--ds-ember-orange);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 0 10px var(--ds-ember-glow);
+    animation: flamePulse 2s infinite alternate;
+}
+
+.covenant-title {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: var(--ds-border-gold);
+    margin-top: 4px;
+}
+
+@keyframes flamePulse {
+    0% { box-shadow: 0 0 5px var(--ds-ember-glow); }
+    100% { box-shadow: 0 0 18px rgba(255, 85, 0, 0.8); }
+}
+
+/* ==========================================================================
+   HERO SECTION & MANGA REAL SPEECH BUBBLE
+   ========================================================================== */
+
+.hero-section {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.manga-speech-bubble {
+    background-color: var(--manga-paper-white);
+    color: var(--manga-ink-black);
+    padding: 35px 30px;
+    border: 4px solid var(--manga-ink-black);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 8px 8px 0px var(--ds-ember-orange), 12px 12px 0px #000;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.manga-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px 20px 0 20px;
+    border-style: solid;
+    border-color: var(--manga-paper-white) transparent transparent transparent;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.hero-subtitle-manga {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #222;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.manga-emphasis {
+    font-family: var(--font-manga);
+    color: #c0392b;
+    font-size: 1.35rem;
+    display: inline-block;
+    transform: rotate(-2deg);
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.xp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.xp-btn-primary {
+    background: linear-gradient(180deg, #2e7d32, #1b5e20);
+    border: 2px solid #4caf50;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.xp-btn-primary:hover {
+    background: linear-gradient(180deg, #388e3c, #2e7d32);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--ds-ember-glow);
+}
+
+.souls-glow-btn {
+    animation: goldGlow 2.5s infinite alternate;
+}
+
+@keyframes goldGlow {
+    0% { border-color: var(--ds-ember-orange); box-shadow: 0 0 5px var(--ds-ember-glow); }
+    100% { border-color: var(--ds-border-gold); box-shadow: 0 0 20px rgba(197, 160, 89, 0.7); }
+}
+
+.xp-btn-secondary {
+    background: linear-gradient(180deg, #424242, #212121);
+    border: 2px solid #757575;
+    color: #e0e0e0;
+}
+
+.xp-btn-secondary:hover {
+    background: linear-gradient(180deg, #616161, #424242);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   ENFOQUES DE CLASE (APROBAR VS PROFUNDIDAD)
+   ========================================================================== */
+
+.approaches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.approach-card {
+    background-color: var(--ds-card-bg);
+    border: 2px solid #333;
+    border-radius: 6px;
+    padding: 24px 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.approach-card:hover {
+    transform: translateY(-3px);
+}
+
+.approach-card.focus-pass {
+    border-color: #3b82f6;
+}
+
+.approach-card.focus-deep {
+    border-color: var(--ds-border-gold);
+    box-shadow: 0 0 12px rgba(197, 160, 89, 0.15);
+}
+
+.approach-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.approach-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.approach-tag {
+    font-family: var(--font-pixel);
+    font-size: 0.95rem;
+    color: var(--ds-ember-orange);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.approach-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+/* ==========================================================================
+   BIOGRAFÍA & STATS
+   ========================================================================== */
+
+.section-header-ds {
+    margin-bottom: 25px;
+}
+
+.ds-subtitle {
+    font-family: var(--font-pixel);
+    color: var(--ds-ember-orange);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.section-header-ds h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--ds-border-gold);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    padding-bottom: 8px;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.character-card {
+    background-color: var(--ds-card-bg);
+    border: 1px solid var(--ds-border-gold);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.card-header-xp {
+    background-color: #1f2330;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-pixel);
+    font-size: 1rem;
+    color: #aaa;
+    border-bottom: 1px solid #333;
+}
+
+.badge-gold {
+    background-color: var(--ds-border-gold);
+    color: #000;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+
+.card-body-ds {
+    padding: 15px;
+}
+
+.tutor-avatar-placeholder {
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(135deg, #111, #222533);
+    border: 1px dashed var(--ds-border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.avatar-code {
+    font-family: var(--font-pixel);
+    font-size: 2rem;
+    color: var(--ds-ember-orange);
+    text-shadow: 0 0 8px var(--ds-ember-glow);
+}
+
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #222533;
+    padding-bottom: 6px;
+}
+
+.stat-key {
+    color: #94a3b8;
+}
+
+.stat-val {
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+.stat-val.highlight { color: var(--ds-ember-orange); }
+
+.score-badge {
+    background-color: #166534;
+    color: #bbf7d0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-pixel);
+    font-size: 1.2rem;
+}
+
+.tags {
+    display: flex;
+    gap: 6px;
+}
+
+.tag {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.tag-cpp { background-color: #1e40af; color: #dbeafe; }
+.tag-cs { background-color: #6b21a8; color: #f3e8ff; }
+.tag-py { background-color: #854d0e; color: #fef08a; }
+
+/* Card Manga Panel */
+.manga-panel-card {
+    background-color: var(--manga-paper-white);
+    color: #111;
+    padding: 20px;
+    border: 3px solid #000;
+    border-radius: 6px;
+    box-shadow: 5px 5px 0px #000;
+}
+
+.manga-panel-title {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+}
+
+.manga-intro-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.method-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.method-bullets li {
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.method-bullets li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    color: #c0392b;
+}
+
+/* ==========================================================================
+   CONTENIDOS & MATERIAS
+   ========================================================================== */
+
+.topics-grid.three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.topic-window {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-window.highlight-ds {
+    border-color: var(--ds-border-gold);
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.15);
+}
+
+.topic-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.topic-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--ds-border-gold);
+}
+
+.topic-desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.topic-tree {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.topic-tree li {
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: #cbd5e1;
+}
+
+.bullet-xp {
+    color: var(--ds-ember-orange);
+    font-size: 0.75rem;
+    margin-right: 4px;
+}
+
+.topic-footer {
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid #222533;
+    padding-top: 10px;
+}
+
+.lang-pill {
+    font-size: 0.75rem;
+    background-color: #1e293b;
+    color: #94a3b8;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.lang-pill.highlight {
+    background-color: rgba(255, 85, 0, 0.2);
+    color: var(--ds-ember-orange);
+    border: 1px solid var(--ds-ember-orange);
+}
+
+/* ==========================================================================
+   REVIEWS & CAPTURAS DE CHAT
+   ========================================================================== */
+
+.reviews-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #1a1e2b;
+    border: 1px dashed var(--ds-border-gold);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.notice-icon {
+    font-size: 1.2rem;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.review-card {
+    background-color: #0b0d14;
+    border: 1px solid #2a2f42;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.review-header-xp {
+    background-color: #161925;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    color: #888;
+    border-bottom: 1px solid #2a2f42;
+}
+
+.rev-status {
+    color: #4ade80;
+}
+
+.review-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #0d0f17;
+}
+
+.chat-bubble {
+    max-width: 85%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    position: relative;
+}
+
+.chat-bubble.classmate {
+    background-color: #1f293d;
+    color: #e2e8f0;
+    align-self: flex-start;
+    border-bottom-left-radius: 1px;
+}
+
+.chat-bubble.tutor {
+    background-color: #064e3b;
+    color: #ecfdf5;
+    align-self: flex-end;
+    border-bottom-right-radius: 1px;
+}
+
+.chat-time {
+    display: block;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    text-align: right;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   PRICING & CALCULADORA XP
+   ========================================================================== */
+
+.pricing-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.pricing-card {
+    background-color: var(--ds-card-bg);
+    border: 1px solid #2d3748;
+    border-radius: 6px;
+    padding: 20px 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card.focus-card {
+    border-color: var(--ds-border-gold);
+    background: linear-gradient(180deg, #161925, #0f1118);
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+}
+
+.pricing-card.group-card {
+    border-color: #3b82f6;
+}
+
+.p-card-badge {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.p-card-badge.gold { background-color: var(--ds-border-gold); color: black; }
+.p-card-badge.group { background-color: #10b981; color: black; }
+
+.p-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: #f8fafc;
+}
+
+.p-card-price {
+    font-family: var(--font-pixel);
+    font-size: 2rem;
+    color: var(--ds-ember-orange);
+    font-weight: bold;
+}
+
+.p-card-price-sub {
+    font-family: var(--font-pixel);
+    font-size: 1.4rem;
+    color: #60a5fa;
+}
+
+.price-unit {
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    color: #94a3b8;
+}
+
+.p-card-subtitle {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 10px 0 15px 0;
+    line-height: 1.4;
+}
+
+.p-card-features {
+    list-style: none;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #cbd5e1;
+    margin-top: auto;
+}
+
+/* Calculadora XP Window */
+.calc-window {
+    margin-top: 20px;
+}
+
+.calc-status {
+    font-family: var(--font-pixel);
+    color: #4ade80;
+}
+
+.calc-body {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #cbd5e1;
+}
+
+.xp-select, .xp-input {
+    background-color: #0b0d14;
+    border: 2px inset #444;
+    color: #fff;
+    padding: 8px 10px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    border-radius: 3px;
+}
+
+.xp-select:focus, .xp-input:focus {
+    outline: none;
+    border-color: var(--ds-border-gold);
+}
+
+.calc-display-box {
+    background-color: #090a0f;
+    border: 2px solid var(--ds-border-gold);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.calc-total-label {
+    font-family: var(--font-pixel);
+    color: #94a3b8;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.calc-total-amount {
+    font-family: var(--font-pixel);
+    font-size: 2.6rem;
+    color: #4ade80;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+    margin: 5px 0;
+}
+
+.calc-breakdown {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.ws-direct-btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   GARANTÍAS & FAQ (NPC DIALOGUES)
+   ========================================================================== */
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.faq-item:hover {
+    background-color: #171a24;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #f1f5f9;
+}
+
+.faq-toggle {
+    font-family: var(--font-pixel);
+    font-size: 1.5rem;
+    color: var(--ds-border-gold);
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #333;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #94a3b8;
+}
+
+.faq-answer ul {
+    margin-top: 6px;
+    padding-left: 18px;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item.open .faq-toggle {
+    content: "-";
+}
+
+/* Victory Banner Final */
+.victory-banner {
+    margin-top: 40px;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.15), rgba(255, 85, 0, 0.15));
+    border: 2px solid var(--ds-border-gold);
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.victory-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--ds-border-gold);
+    text-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
+    letter-spacing: 3px;
+}
+
+.victory-text {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    margin: 10px 0 20px 0;
+}
+
+.large-btn {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+}
+
+/* ==========================================================================
+   BARRA DE TAREAS WINDOWS XP (TASKBAR)
+   ========================================================================== */
+
+.xp-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 38px;
+    background: linear-gradient(180deg, #245edb 0%, #1941a5 50%, #19328e 100%);
+    border-top: 1px solid #4282f5;
+    display: flex;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+}
+
+.xp-start-btn {
+    background: linear-gradient(180deg, #388e3c 0%, #1b5e20 100%);
+    border: none;
+    border-radius: 0 8px 8px 0;
+    height: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.4), 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.xp-start-btn:hover {
+    filter: brightness(1.15);
+}
+
+.xp-flag {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.xp-start-text {
+    color: white;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.xp-taskbar-items {
+    display: flex;
+    gap: 4px;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.xp-task-item {
+    background: linear-gradient(180deg, #3c8df6 0%, #0053d6 100%);
+    border: 1px solid #002793;
+    border-radius: 3px;
+    padding: 4px 12px;
+    color: white;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.xp-task-item.active {
+    background: linear-gradient(180deg, #1e4bbd 0%, #102b78 100%);
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.xp-tray {
+    background: linear-gradient(180deg, #0973e6 0%, #0e57c6 100%);
+    border-left: 1px solid #002793;
+    height: 100%;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-pixel);
+    font-size: 1rem;
+    color: white;
+}
+
+/* Menú Inicio XP Desplegable */
+.xp-start-menu {
+    position: fixed;
+    bottom: 38px;
+    left: 0;
+    width: 320px;
+    background-color: white;
+    border: 2px solid #00138c;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+    display: none;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.xp-start-menu.open {
+    display: flex;
+}
+
+.start-menu-sidebar {
+    background: linear-gradient(180deg, #1c4bc2, #0d2873);
+    width: 90px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    background-color: var(--ds-ember-orange);
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.user-name {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.start-menu-content {
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #f6f6f6;
+}
+
+.start-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: #222;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.start-item:hover {
+    background-color: #316ac5;
+    color: white;
+}
+
+.start-item.highlight {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.start-divider {
+    height: 1px;
+    background-color: #ccc;
+    margin: 4px 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================================================== */
+
+@media (max-width: 850px) {
+    .character-grid, .approaches-grid, .topics-grid.three-col, .reviews-grid, .calc-body {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .souls-hud {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .souls-covenant {
+        align-items: flex-start;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle-manga {
+        font-size: 0.95rem;
+    }
+
+    .xp-menu-bar {
+        display: none;
+    }
+
+    .xp-taskbar-items {
+        display: none;
+    }
+}

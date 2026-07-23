@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hyw_jon | Tutorías de Programación & Estructura de Datos - Univ. de Pilar</title>
+    <meta name="description" content="Tutorías particulares de programación, estructura de datos y POO por Jonatan Rosas (hyw_jon) para alumnos de la Universidad de Pilar. C++, C#, Python.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=VT323&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Canvas para Partículas de Ceniza / Embers tipo Dark Souls -->
+    <canvas id="emberCanvas"></canvas>
+
+    <!-- Fondo Manga Hatching Overlay -->
+    <div class="manga-overlay"></div>
+
+    <!-- Barra de Tareas Estilo Windows XP (Taskbar inferior) -->
+    <div class="xp-taskbar">
+        <button class="xp-start-btn" id="startBtn">
+            <span class="xp-flag">❖</span>
+            <span class="xp-start-text">inicio</span>
+        </button>
+        <div class="xp-taskbar-items">
+            <div class="xp-task-item active" id="taskMain">
+                <span class="xp-icon">💻</span> hyw_jon.exe
+            </div>
+            <div class="xp-task-item" id="taskCalc">
+                <span class="xp-icon">🧮</span> Calculadora_Tarifas.exe
+            </div>
+            <div class="xp-task-item" id="taskReviews">
+                <span class="xp-icon">🖼️</span> Reviews_Compañeros.exe
+            </div>
+        </div>
+        <div class="xp-tray">
+            <span class="bonfire-indicator" title="Hoguera encendida (Bonfire Lit)">🔥</span>
+            <span class="sound-icon">🔊</span>
+            <span id="xpClock">19:30</span>
+        </div>
+    </div>
+
+    <!-- Menú Inicio XP Desplegable -->
+    <div class="xp-start-menu" id="startMenu">
+        <div class="start-menu-sidebar">
+            <div class="user-avatar">JON</div>
+            <span class="user-name">Jonatan Rosas</span>
+        </div>
+        <div class="start-menu-content">
+            <a href="#hero-section" class="start-item"><span class="item-icon">🏰</span> Inicio / Hero</a>
+            <a href="#stats-section" class="start-item"><span class="item-icon">⚔️</span> Mi Perfil & Stats (9.10)</a>
+            <a href="#approaches-section" class="start-item"><span class="item-icon">🎯</span> Modalidades de Clase</a>
+            <a href="#topics-section" class="start-item"><span class="item-icon">📚</span> Materias (Univ. Pilar)</a>
+            <a href="#reviews-section" class="start-item"><span class="item-icon">🖼️</span> Opiniones de Compañeros</a>
+            <a href="#calculator-section" class="start-item"><span class="item-icon">💎</span> Precios & Calculadora</a>
+            <a href="#faq-section" class="start-item"><span class="item-icon">🛡️</span> Garantías & FAQ</a>
+            <div class="start-divider"></div>
+            <a href="https://wa.me/541173690564?text=Hola%20Jon!%20Vi%20tu%20pagina%20web%20y%20quiero%20consultar%20por%20clases%20de%20tutoria." target="_blank" class="start-item highlight">
+                <span class="item-icon">💬</span> Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal de Escritorio / App -->
+    <main class="desktop-container">
+
+        <!-- VENTANA PRINCIPAL (Windows XP + Dark Souls Theme) -->
+        <div class="xp-window main-window" id="mainWindow">
+            <!-- Barra de Título XP -->
+            <div class="xp-title-bar">
+                <div class="xp-title-text">
+                    <span class="window-icon">⚔️</span>
+                    <span>hyw_jon_tutorias_v1.0.exe - [Ayuda Académica - Univ. de Pilar]</span>
+                </div>
+                <div class="xp-window-controls">
+                    <button class="win-btn win-min" title="Minimizar">_</button>
+                    <button class="win-btn win-max" title="Maximizar">□</button>
+                    <button class="win-btn win-close" title="Cerrar">X</button>
+                </div>
+            </div>
+
+            <!-- Menú Superior XP (File Edit View...) -->
+            <div class="xp-menu-bar">
+                <span><u>A</u>rchivo</span>
+                <span><u>M</u>aterias</span>
+                <span><u>T</u>arifas</span>
+                <span><u>G</u>arantías</span>
+                <span><u>C</u>ontacto</span>
+                <span class="souls-level-tag">LEVEL 9.10 TUTOR</span>
+            </div>
+
+            <!-- Cuerpo Interno de la Ventana -->
+            <div class="xp-window-body">
+
+                <!-- HUD Dark Souls Superior -->
+                <div class="souls-hud">
+                    <div class="hud-bars">
+                        <div class="hud-bar hp-bar">
+                            <span class="bar-label">HP (Entendimiento en Clase)</span>
+                            <div class="bar-fill" style="width: 100%;"></div>
+                            <span class="bar-value">100 / 100</span>
+                        </div>
+                        <div class="hud-bar fp-bar">
+                            <span class="bar-label">FP (Lógica de Código & Algoritmos)</span>
+                            <div class="bar-fill" style="width: 95%;"></div>
+                            <span class="bar-value">95 / 100</span>
+                        </div>
+                        <div class="hud-bar stamina-bar">
+                            <span class="bar-label">PROMEDIO ACADÉMICO</span>
+                            <div class="bar-fill" style="width: 91%;"></div>
+                            <span class="bar-value">9.10 SCORE</span>
+                        </div>
+                    </div>
+                    <div class="souls-covenant">
+                        <div class="covenant-badge">🔥 BONFIRE LIT</div>
+                        <div class="covenant-title">Programación</div>
+                    </div>
+                </div>
+
+                <!-- HERO SECTION con Estética Manga "REAL" (Globo de Diálogo Dramático + Hook) -->
+                <section class="hero-section" id="hero-section">
+                    <div class="manga-speech-bubble">
+                        <h1 class="hero-title">
+                            "¿TE ESTÁ COSTANDO ENTENDER A LOS PROFES O TE SENTÍS ATRASADO?"
+                        </h1>
+                        <p class="hero-subtitle-manga">
+                            <span class="manga-emphasis">NO PASA NADA.</span> Repasamos los temas hasta que los entiendas y apruebes el final. Clases orientadas para alumnos de la <strong class="text-gold">Universidad de Pilar</strong>.
+                        </p>
+                        <div class="manga-hatch-decor"></div>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="https://wa.me/541173690564?text=Hola%20Jon!%20Te%20escribo%20desde%20la%20web.%20Quiero%20asesorarme%20para%20preparar%20un%20parcial/final." target="_blank" class="xp-btn xp-btn-primary souls-glow-btn">
+                            <span class="btn-icon">🔥</span> Enviar WhatsApp
+                        </a>
+                        <a href="#calculator-section" class="xp-btn xp-btn-secondary">
+                            <span class="btn-icon">🧮</span> Ver Precios & Modalidades
+                        </a>
+                    </div>
+                </section>
+
+                <hr class="xp-divider">
+
+                <!-- SECCIÓN: DOS ENFOQUES DE CLASE -->
+                <section class="approaches-section" id="approaches-section">
+                    <div class="section-header-ds">
+                        <span class="ds-subtitle">MODALIDAD DE TRABAJO</span>
+                        <h2>🎯 ¿Qué tipo de clase estás buscando?</h2>
+                    </div>
+
+                    <div class="approaches-grid">
+                        <div class="approach-card focus-pass">
+                            <div class="approach-icon">🎯</div>
+                            <h3>1. Lo Necesario para Aprobar</h3>
+                            <p class="approach-tag">ENFOCADO EN EXAMEN</p>
+                            <p class="approach-desc">
+                                Vamos directo a los puntos clave que te van a evaluar en la Universidad de Pilar para que apruebes el parcial o final sin rodeos innecesarios.
+                            </p>
+                        </div>
+
+                        <div class="approach-card focus-deep">
+                            <div class="approach-icon">🔬</div>
+                            <h3>2. Enfoque en Profundidad</h3>
+                            <p class="approach-tag">MÁS ALLÁ DEL EXAMEN</p>
+                            <p class="approach-desc">
+                                Si querés entender los porqués internos del lenguaje, el manejo de memoria a fondo y buenas prácticas para dominar la materia más allá del parcial.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="xp-divider">
+
+                <!-- SECCIÓN: MI BIOGRAFÍA & STATS DE PERSONAJE -->
+                <section class="stats-section" id="stats-section">
+                    <div class="section-header-ds">
+                        <span class="ds-subtitle">ANTECEDENTES</span>
+                        <h2>📜 Mi Biografía & Credenciales</h2>
+                    </div>
+
+                    <div class="character-grid">
+                        <!-- Card Estilo Menú de Inventario XP / DS -->
+                        <div class="character-card">
+                            <div class="card-header-xp">
+                                <span>[STATS_VIEWER.DLL]</span>
+                                <span class="badge-gold">PROMEDIO 9.10</span>
+                            </div>
+                            <div class="card-body-ds">
+                                <div class="avatar-box">
+                                    <div class="tutor-avatar-placeholder">
+                                        <div class="avatar-code">&lt;hyw_jon /&gt;</div>
+                                    </div>
+                                </div>
+                                <div class="stats-list">
+                                    <div class="stat-row">
+                                        <span class="stat-key">🪪 Alias:</span>
+                                        <span class="stat-val highlight">Jonatan Rosas</span>
+                                    </div>
+                                    <div class="stat-row">
+                                        <span class="stat-key">🎓 Formación:</span>
+                                        <span class="stat-val">Tecnicatura en Programación</span>
+                                    </div>
+                                    <div class="stat-row">
+                                        <span class="stat-key">🏛️ Casas de Estudio:</span>
+                                        <span class="stat-val">UTN Pacheco & Univ. de Pilar</span>
+                                    </div>
+                                    <div class="stat-row">
+                                        <span class="stat-key">🏆 Promedio Académico:</span>
+                                        <span class="stat-val score-badge">9.10 / 10.00</span>
+                                    </div>
+                                    <div class="stat-row">
+                                        <span class="stat-key">⚡ Lenguajes Dominantes:</span>
+                                        <span class="stat-val tags">
+                                            <span class="tag tag-cpp">C++</span>
+                                            <span class="tag tag-cs">C#</span>
+                                            <span class="tag tag-py">Python</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card de Filosofía & Dinámica -->
+                        <div class="manga-panel-card">
+                            <div class="manga-panel-title">MINDSET & METODOLOGÍA</div>
+                            <blockquote class="manga-quote">
+                                "Entender estructuras de datos o lógica de programación no es cuestión de suerte ni de ser un genio. Es cuestión de descomponer el problema paso a paso hasta que la solución sea inevitable."
+                            </blockquote>
+                            <ul class="method-bullets">
+                                <li><strong>Explicación Simple:</strong> Empezamos de abajo hacia arriba. Te explico qué pasa en memoria como si te lo contara un compañero.</li>
+                                <li><strong>Resolución de Ejercicios Reales:</strong> Practicamos dependiendo lo que quieras, ¿tomamos tiempo y hacemos ejercicios? O solo explico, ¡como te parezca más fácil!</li>
+                                <li><strong>Sin Vergüenza:</strong> Las clases están para que preguntes lo que quieras, no importa que lo sientas "bobo".</li>
+                                <li><strong>Herramientas Visuales:</strong> Usamos pizarrón digital, esquemas en Canvas de Obsidian y páginas interactivas para guiarnos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="xp-divider">
+
+                <!-- SECCIÓN: MATERIAS & CONTENIDOS (SKILL TREES) -->
+                <section class="topics-section" id="topics-section">
+                    <div class="section-header-ds">
+                        <span class="ds-subtitle">RUTA DE TRABAJO</span>
+                        <h2>📚 Contenidos & Temarios Disponibles</h2>
+                    </div>
+
+                    <div class="topics-grid three-col">
+
+                        <!-- ÁRBOL 1: PROGRAMACIÓN BÁSICA E INTERMEDIA -->
+                        <div class="topic-window xp-inset">
+                            <div class="topic-header">
+                                <span class="topic-icon">⚔️</span>
+                                <h3>Programación Básica e Intermedia</h3>
+                            </div>
+                            <p class="topic-desc">Ideal para quien recién arranca o se trabó con la lógica inicial de la cursada.</p>
+                            <ul class="topic-tree">
+                                <li><span class="bullet-xp">▶</span> <strong>Fundamentos de Lógica:</strong> Variables, tipos de datos, operadores lógicos y relacionales.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Estructuras de Control:</strong> Condicionales (`if`, `else`, `switch`) y toma de decisiones.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Bucles e Iteraciones:</strong> Dominio absoluto de `for`, `while` y `do-while`.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Modularización & Funciones:</strong> Paso de parámetros por valor y por referencia, alcance y retorno.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Arreglos & Estructuras:</strong> Vectores, matrices, manipulación de índices y `structs`.</li>
+                            </ul>
+                            <div class="topic-footer">
+                                <span class="lang-pill">C++</span>
+                                <span class="lang-pill">C#</span>
+                                <span class="lang-pill">Python</span>
+                            </div>
+                        </div>
+
+                        <!-- ÁRBOL 2: ESTRUCTURA DE DATOS -->
+                        <div class="topic-window xp-inset highlight-ds">
+                            <div class="topic-header">
+                                <span class="topic-icon">🧠</span>
+                                <h3>Estructura de Datos & Algoritmos</h3>
+                            </div>
+                            <p class="topic-desc">Para vencer a los temas de la carrera y dominarlos.</p>
+                            <ul class="topic-tree">
+                                <li><span class="bullet-xp">▶</span> <strong>Referencias y Punteros:</strong> Asignación dinámica (`new`/`delete`, `malloc`/`free`), aritmética de punteros.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Listas Enlazadas:</strong> Listas simples, doblemente enlazadas, circulares y operaciones avanzadas.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Pilas & Colas (LIFO / FIFO):</strong> Implementación con arreglos y nodos dinámicos.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Recursividad:</strong> Desglose de llamadas en stack, casos base y recursión compleja.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Árboles & Grafos:</strong> Árboles Binarios de Búsqueda (ABB), recorridos (Inorden, Preorden, Postorden).</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Ordenamiento y Búsqueda:</strong> BubbleSort, QuickSort, MergeSort, Búsqueda Binaria.</li>
+                            </ul>
+                            <div class="topic-footer">
+                                <span class="lang-pill highlight">C++ Core</span>
+                                <span class="lang-pill">C# Data Structures</span>
+                            </div>
+                        </div>
+
+                        <!-- ÁRBOL 3: POO (PROGRAMACIÓN ORIENTADA A OBJETOS) -->
+                        <div class="topic-window xp-inset">
+                            <div class="topic-header">
+                                <span class="topic-icon">🏗️</span>
+                                <h3>POO (Orientada a Objetos)</h3>
+                            </div>
+                            <p class="topic-desc">Paradigma esencial de desarrollo.</p>
+                            <ul class="topic-tree">
+                                <li><span class="bullet-xp">▶</span> <strong>Clases & Objetos:</strong> Instanciación, miembros, métodos y constructores/destructores.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Encapsulamiento:</strong> Modificadores de acceso (`public`, `private`, `protected`).</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Herencia & Polimorfismo:</strong> Clases base/derivadas, métodos virtuales y sobreescritura.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Sobrecarga:</strong> Sobrecarga de funciones y operadores en C++/C#.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Abstracción:</strong> Interfaces y clases abstractas.</li>
+                            </ul>
+                            <div class="topic-footer">
+                                <span class="lang-pill">C++ POO</span>
+                                <span class="lang-pill">C# POO</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <hr class="xp-divider">
+
+                <!-- SECCIÓN: REVIEWS Y CAPTURAS DE COMPAÑEROS -->
+                <section class="reviews-section" id="reviews-section">
+                    <div class="section-header-ds">
+                        <span class="ds-subtitle">OPINIONES DE COMPAÑEROS</span>
+                        <h2>🖼️ Capturas & Reseñas de Alumnos</h2>
+                    </div>
+
+                    <div class="reviews-container xp-inset">
+                        <div class="reviews-notice">
+                            <span class="notice-icon">💬</span>
+                            <span>Espacio para capturas de pantalla de compañeros sobre las clases y explicaciones.</span>
+                        </div>
+
+                        <div class="reviews-grid">
+                            <!-- Captura 1 -->
+                            <div class="review-card">
+                                <div class="review-header-xp">
+                                    <span class="rev-file">[CHAT_WHATSAPP_01.PNG]</span>
+                                    <span class="rev-status">✔ APROBADO</span>
+                                </div>
+                                <div class="review-body">
+                                    <div class="chat-bubble classmate">
+                                        <p>"Che Jon, mil gracias posta! Entendí en 1 hora de lista enlazada lo que no entendí en todo el cuatrimestre. Aprobé el parcial!"</p>
+                                        <span class="chat-time">19:42</span>
+                                    </div>
+                                    <div class="chat-bubble tutor">
+                                        <p>"Grande!! Sabía que lo ibas a sacar. A meterle para el final ahora 💪"</p>
+                                        <span class="chat-time">19:44</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Captura 2 -->
+                            <div class="review-card">
+                                <div class="review-header-xp">
+                                    <span class="rev-file">[CHAT_WHATSAPP_02.PNG]</span>
+                                    <span class="rev-status">✔ RECOMENDADO</span>
+                                </div>
+                                <div class="review-body">
+                                    <div class="chat-bubble classmate">
+                                        <p>"Genio Jon, la forma en que lo explicaste con el pizarrón digital y el diagrama me salvó la vida en POO."</p>
+                                        <span class="chat-time">21:15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="xp-divider">
+
+                <!-- SECCIÓN: PRECIOS, PLANES Y CALCULADORA DINÁMICA XP -->
+                <section class="calculator-section" id="calculator-section">
+                    <div class="section-header-ds">
+                        <span class="ds-subtitle">CALCULADOR DE PRECIO</span>
+                        <h2>💎 Precios, Modalidades y Calculadora</h2>
+                    </div>
+
+                    <!-- Grid de Tarjetas de Precios -->
+                    <div class="pricing-cards-grid">
+
+                        <!-- Card 1: Virtual Individual -->
+                        <div class="pricing-card">
+                            <div class="p-card-badge">MÁS PEDIDO</div>
+                            <h3 class="p-card-title">🌐 Virtual Individual (1 a 1)</h3>
+                            <div class="p-card-price">$10.000 <span class="price-unit">/ hora</span></div>
+                            <p class="p-card-subtitle">Vía Google Meet o Discord con Live Coding & Compartir Pantalla HD.</p>
+                            <ul class="p-card-features">
+                                <li>✓ Atención 100% personalizada en tu código.</li>
+                                <li>✓ Pago: Previo a iniciar la clase.</li>
+                                <li>✓ Horarios ultra flexibles a convenir.</li>
+                                <li>✓ Entrega de archivos y ejercicios post-clase.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Card 2: Presencial Individual -->
+                        <div class="pricing-card focus-card">
+                            <div class="p-card-badge gold">100% PRÁCTICO</div>
+                            <h3 class="p-card-title">🏫 Presencial Individual</h3>
+                            <div class="p-card-price">$13.000 <span class="price-unit">/ hora</span></div>
+                            <p class="p-card-subtitle">En la Universidad de Pilar (en el SUMA por ej) o en tu domicilio.</p>
+                            <ul class="p-card-features">
+                                <li>✓ Explicación cara a cara con cuaderno y laptop.</li>
+                                <li>✓ Pago: Cuando el alumno prefiera.</li>
+                                <li>✓ Ideal para destrabar temas complejos antes de rendir.</li>
+                                <li>✓ Ubicaciones: Univ. de Pilar / Tu casa.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Card 3: PLAN COLECTIVO / GRUPAL (AHORRO) -->
+                        <div class="pricing-card group-card">
+                            <div class="p-card-badge group">PLAN COLECTIVO / AMIGOS</div>
+                            <h3 class="p-card-title">👥 Plan Colectivo (Grupal)</h3>
+                            <div class="p-card-price">$7.000 <span class="price-unit">/ hs x persona (Virtual)</span></div>
+                            <div class="p-card-price-sub">$8.000 <span class="price-unit">/ hs x persona (Presencial)</span></div>
+                            <p class="p-card-subtitle">Vengan de a 2 hasta 5 compañeros de comisión. ¡Ahorran plata y se sacan dudas en grupo!</p>
+                            <ul class="p-card-features">
+                                <li>✓ Dinámica de grupo: Las dudas de uno benefician a todos.</li>
+                                <li>✓ Mismo temario y dedicación intensiva.</li>
+                                <li>✓ Tarifa rebajada por estudiante.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- CALCULADORA EN VENTANA INTERACTIVA XP -->
+                    <div class="xp-window calc-window">
+                        <div class="xp-title-bar small">
+                            <span>🧮 Calculadora_de_Presupuesto.exe</span>
+                            <span class="calc-status">STATUS: ONLINE</span>
+                        </div>
+                        <div class="calc-body xp-inset">
+                            <div class="calc-form">
+                                <div class="form-group">
+                                    <label for="calcMode">Modalidad de Clase:</label>
+                                    <select id="calcMode" class="xp-select">
+                                        <option value="virt_ind">Virtual Individual (1 a 1) - $10.000/hs</option>
+                                        <option value="pres_ind">Presencial Individual (1 a 1) - $13.000/hs</option>
+                                        <option value="virt_grp">Virtual Colectivo / Grupal - $7.000/hs por alumno</option>
+                                        <option value="pres_grp">Presencial Colectivo / Grupal - $8.000/hs por alumno</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="calcHours">Cantidad de Horas:</label>
+                                        <input type="number" id="calcHours" class="xp-input" value="2" min="1" max="20">
+                                    </div>
+
+                                    <div class="form-group" id="studentsGroup" style="display: none;">
+                                        <label for="calcStudents">Alumnos en la clase:</label>
+                                        <input type="number" id="calcStudents" class="xp-input" value="2" min="2" max="5">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="calcTopic">Materia / Tema a Preparar:</label>
+                                    <input type="text" id="calcTopic" class="xp-input" placeholder="Ej: Vectores en C++, Memoria Dinámica, Preparación Parcial">
+                                </div>
+                            </div>
+
+                            <div class="calc-display-box">
+                                <div class="calc-total-label">PRESUPUESTO ESTIMADO:</div>
+                                <div class="calc-total-amount" id="totalAmount">$20.000 ARS</div>
+                                <div class="calc-breakdown" id="calcBreakdown">2 horas x $10.000 (Virtual 1 a 1)</div>
+                                <a id="wsReserveBtn" href="#" target="_blank" class="xp-btn xp-btn-primary ws-direct-btn">
+                                    💬 Solicitud Directa a WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <hr class="xp-divider">
+
+                <!-- SECCIÓN: GARANTÍAS Y PREGUNTAS FRECUENTES (NPC DIALOGUES) -->
+                <section class="faq-section" id="faq-section">
+                    <div class="section-header-ds">
+                        <span class="ds-subtitle">NPC DIALOGUES & GUARANTEES</span>
+                        <h2>🛡️ Garantías & Preguntas Frecuentes</h2>
+                    </div>
+
+                    <div class="faq-accordion">
+                        <div class="faq-item xp-inset">
+                            <div class="faq-question">
+                                <span>❓ ¿Qué pasa si durante la clase siento que un tema me cuesta mucho entenderlo?</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No hay presión. Mi compromiso es buscar 2 o 3 formas distintas de explicártelo con ejemplos prácticos, código dibujado paso a paso o analogías de la vida real hasta que te haga el "click" mental.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item xp-inset">
+                            <div class="faq-question">
+                                <span>❓ ¿Me llevo el material y el código que escribamos en clase?</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>¡Totalmente! Al finalizar la clase te comparto la carpeta con todo el código fuente comentado (`.cpp`, `.cs`, `.py`), diagramas y notas que hayamos utilizado.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item xp-inset">
+                            <div class="faq-question">
+                                <span>❓ ¿Cómo son las modalidades de pago?</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Acepto transferencia bancaria, Mercado Pago o efectivo.</p>
+                                <ul>
+                                    <li><strong>Virtual:</strong> Se abona <u>antes</u> de la clase.</li>
+                                    <li><strong>Presencial:</strong> Se abona <u>cuando el alumno prefiera</u> (durante o al finalizar la clase).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item xp-inset">
+                            <div class="faq-question">
+                                <span>❓ ¿Dónde son las clases presenciales?</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Podemos coordinar para encontrarnos en la <strong>Universidad de Pilar</strong> (en el SUMA por ej) o directamente en tu domicilio si te queda más cómodo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BANNER FINAL "ACA ESTA LA SOLUCION" -->
+                <div class="victory-banner">
+                    <div class="victory-title">ACA ESTA LA SOLUCION</div>
+                    <p class="victory-text">Tu parcial/final aprobado está a un mensaje de distancia.</p>
+                    <a href="https://wa.me/541173690564?text=Hola%20Jon!%20Quiero%20reservar%20mi%20clase%20de%20tutoria%20para%20preparar%20mi%20examen." target="_blank" class="xp-btn xp-btn-primary large-btn">
+                        📲 Mandar WhatsApp a +54 11 7369-0564
+                    </a>
+                </div>
+
+            </div> <!-- /xp-window-body -->
+
+            <!-- Status Bar Inferior XP -->
+            <div class="xp-status-bar">
+                <span>Estado: Sistema Listo</span>
+                <span>Conexión: WhatsApp +541173690564</span>
+                <span>Promedio: 9.10 Score</span>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
