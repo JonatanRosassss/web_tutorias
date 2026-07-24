@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flyer Tutorías | Diseño Exacto (Jonatan Rosas)</title>
+    <title>Flyer Tutorías | Diseño Réplica con Ventanitas (Jonatan Rosas)</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +26,10 @@
             padding: 20px;
         }
 
-        /* FLYER POSTER CONTAINER (EXACT IMAGE REPLICATION) */
+        /* FLYER POSTER CONTAINER */
         .flyer-poster {
             width: 500px;
-            height: 720px;
+            height: 730px;
             background-color: #ffffff;
             border: 4px solid #000000;
             border-radius: 12px;
@@ -101,58 +101,6 @@
             position: relative;
         }
 
-        /* SIMULATED XP SCROLLBARS */
-        .xp-scrollbar-v {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 16px;
-            height: 100%;
-            background-color: #ece9d8;
-            border-left: 1px solid #999;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2px 0;
-        }
-
-        .xp-scrollbar-h {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 16px;
-            background-color: #ece9d8;
-            border-top: 1px solid #999;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2px;
-        }
-
-        .scroll-arrow {
-            font-size: 8px;
-            color: #333;
-            cursor: pointer;
-        }
-
-        .scroll-thumb-v {
-            width: 12px;
-            height: 35px;
-            background-color: #d6d3ce;
-            border: 1px solid #ffffff;
-            box-shadow: inset -1px -1px 2px #888;
-        }
-
-        .scroll-thumb-h {
-            width: 40px;
-            height: 12px;
-            background-color: #d6d3ce;
-            border: 1px solid #ffffff;
-            box-shadow: inset -1px -1px 2px #888;
-        }
-
         .banner-text-main {
             font-family: 'Anton', 'Plus Jakarta Sans', sans-serif;
             color: #ff4800;
@@ -161,7 +109,6 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             text-shadow: 2px 2px 0px #000;
-            padding-right: 12px;
         }
 
         /* 2. SUBTITLE */
@@ -170,50 +117,64 @@
             font-weight: 900;
             color: #0c0c0e;
             text-align: center;
-            margin: 12px 0;
+            margin: 10px 0;
             letter-spacing: -0.2px;
         }
 
-        /* 3. MIDDLE SECTION (CARDS + MANGA PANEL) */
+        /* 3. MIDDLE SECTION (CARDS CON VENTANITAS XP + MANGA PANEL) */
         .middle-container {
             position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 240px;
+            min-height: 245px;
             margin-bottom: 12px;
         }
 
         .cards-stack {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             z-index: 3;
-            width: 78%;
+            width: 80%;
         }
 
-        .pill-card {
+        .pill-card-xp {
             background-color: #0f1015;
             border: 2px solid #000000;
-            border-radius: 12px;
-            padding: 12px 18px;
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 4px 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .pill-xp-titlebar {
+            background: linear-gradient(180deg, #0058e6 0%, #2576f7 100%);
+            padding: 4px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+
+        .pill-body {
+            padding: 10px 14px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            transition: transform 0.2s ease;
+            gap: 10px;
         }
 
         .pill-dot {
             color: #ffffff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 0;
         }
 
         .pill-text {
             color: #ff4800;
             font-weight: 900;
-            font-size: 1.05rem;
+            font-size: 1rem;
             letter-spacing: 0.2px;
         }
 
@@ -223,7 +184,7 @@
             right: -10px;
             top: -15px;
             width: 230px;
-            height: 265px;
+            height: 275px;
             object-fit: cover;
             border-left: 2px solid #000;
             z-index: 1;
@@ -250,8 +211,8 @@
             padding: 6px;
             border-radius: 8px;
             border: 2px solid #000;
-            width: 100px;
-            height: 100px;
+            width: 95px;
+            height: 95px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -304,19 +265,6 @@
                 </div>
             </div>
             <div class="xp-body-inner">
-                <!-- SCROLLBAR VERTICAL -->
-                <div class="xp-scrollbar-v">
-                    <span class="scroll-arrow">▲</span>
-                    <div class="scroll-thumb-v"></div>
-                    <span class="scroll-arrow">▼</span>
-                </div>
-                <!-- SCROLLBAR HORIZONTAL -->
-                <div class="xp-scrollbar-h">
-                    <span class="scroll-arrow">◀</span>
-                    <div class="scroll-thumb-h"></div>
-                    <span class="scroll-arrow">▶</span>
-                </div>
-
                 <div class="banner-text-main">
                     TUTORÍAS DE<br>PROGRAMACIÓN
                 </div>
@@ -324,22 +272,48 @@
         </div>
 
         <!-- 2. SUBTITLE -->
-        <h2 class="sub-title">Exclusivo para chicos de Univ. de Pilar</h2>
+        <h2 class="sub-title">Para chicos de Univ. de Pilar</h2>
 
-        <!-- 3. MIDDLE SECTION (PILL CARDS + MANGA ART) -->
+        <!-- 3. MIDDLE SECTION (CARDS VENTANITAS XP + MANGA ART) -->
         <div class="middle-container">
             <div class="cards-stack">
-                <div class="pill-card">
-                    <span class="pill-dot">•</span>
-                    <span class="pill-text">Programación Básica e Intermedia</span>
+                <div class="pill-card-xp">
+                    <div class="pill-xp-titlebar">
+                        <span>Prog_Basica.exe</span>
+                        <div class="xp-controls">
+                            <span class="xp-btn xp-close">x</span>
+                        </div>
+                    </div>
+                    <div class="pill-body">
+                        <span class="pill-dot">•</span>
+                        <span class="pill-text">Programación Básica e Intermedia</span>
+                    </div>
                 </div>
-                <div class="pill-card">
-                    <span class="pill-dot">•</span>
-                    <span class="pill-text">POO (Orientada a Objetos)</span>
+
+                <div class="pill-card-xp">
+                    <div class="pill-xp-titlebar">
+                        <span>Objetos_POO.exe</span>
+                        <div class="xp-controls">
+                            <span class="xp-btn xp-close">x</span>
+                        </div>
+                    </div>
+                    <div class="pill-body">
+                        <span class="pill-dot">•</span>
+                        <span class="pill-text">POO (Orientada a Objetos)</span>
+                    </div>
                 </div>
-                <div class="pill-card">
-                    <span class="pill-dot">•</span>
-                    <span class="pill-text">Estructura de Datos</span>
+
+                <div class="pill-card-xp">
+                    <div class="pill-xp-titlebar">
+                        <span>Estructura_Datos.exe</span>
+                        <div class="xp-controls">
+                            <span class="xp-btn xp-close">x</span>
+                        </div>
+                    </div>
+                    <div class="pill-body">
+                        <span class="pill-dot">•</span>
+                        <span class="pill-text">Estructura de Datos</span>
+                    </div>
                 </div>
             </div>
 
