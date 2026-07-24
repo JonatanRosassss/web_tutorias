@@ -30,7 +30,7 @@
                 <span class="xp-icon">💻</span> hyw_jon.exe
             </div>
             <div class="xp-task-item" id="taskCalc">
-                <span class="xp-icon">🧮</span> Calculadora_Tarifas.exe
+                <span class="xp-icon">🧮</span> Tarifas.exe
             </div>
             <div class="xp-task-item" id="taskReviews">
                 <span class="xp-icon">🖼️</span> Reviews_Compañeros.exe
@@ -55,7 +55,7 @@
             <a href="#approaches-section" class="start-item"><span class="item-icon">🎯</span> Modalidades de Clase</a>
             <a href="#topics-section" class="start-item"><span class="item-icon">📚</span> Materias (Univ. Pilar)</a>
             <a href="#reviews-section" class="start-item"><span class="item-icon">🖼️</span> Opiniones de Compañeros</a>
-            <a href="#calculator-section" class="start-item"><span class="item-icon">💎</span> Precios & Calculadora</a>
+            <a href="#calculator-section" class="start-item"><span class="item-icon">💎</span> Precios</a>
             <a href="#faq-section" class="start-item"><span class="item-icon">🛡️</span> Garantías & FAQ</a>
             <div class="start-divider"></div>
             <a href="https://wa.me/541173690564?text=Hola%20Jon!%20Vi%20tu%20pagina%20web%20y%20quiero%20consultar%20por%20clases%20de%20tutoria." target="_blank" class="start-item highlight">
@@ -89,7 +89,7 @@
                 <span><u>T</u>arifas</span>
                 <span><u>G</u>arantías</span>
                 <span><u>C</u>ontacto</span>
-                <span class="souls-level-tag">LEVEL 9.10 TUTOR</span>
+                <span class="souls-level-tag">PROMEDIO 9.10 TUTOR</span>
             </div>
 
             <!-- Cuerpo Interno de la Ventana -->
@@ -201,7 +201,7 @@
                                     </div>
                                     <div class="stat-row">
                                         <span class="stat-key">🎓 Formación:</span>
-                                        <span class="stat-val">Tecnicatura en Programación</span>
+                                        <span class="stat-val">Tecnicatura en Programación y Desarrollo</span>
                                     </div>
                                     <div class="stat-row">
                                         <span class="stat-key">🏛️ Casas de Estudio:</span>
@@ -225,7 +225,7 @@
 
                         <!-- Card de Filosofía & Dinámica -->
                         <div class="manga-panel-card">
-                            <div class="manga-panel-title">MINDSET & METODOLOGÍA</div>
+                            <div class="manga-panel-title">METODOLOGÍA</div>
                             <blockquote class="manga-quote">
                                 "Entender estructuras de datos o lógica de programación no es cuestión de suerte ni de ser un genio. Es cuestión de descomponer el problema paso a paso hasta que la solución sea inevitable."
                             </blockquote>
@@ -262,7 +262,7 @@
                                 <li><span class="bullet-xp">▶</span> <strong>Estructuras de Control:</strong> Condicionales (`if`, `else`, `switch`) y toma de decisiones.</li>
                                 <li><span class="bullet-xp">▶</span> <strong>Bucles e Iteraciones:</strong> Dominio absoluto de `for`, `while` y `do-while`.</li>
                                 <li><span class="bullet-xp">▶</span> <strong>Modularización & Funciones:</strong> Paso de parámetros por valor y por referencia, alcance y retorno.</li>
-                                <li><span class="bullet-xp">▶</span> <strong>Arreglos & Estructuras:</strong> Vectores, matrices, manipulación de índices y `structs`.</li>
+                                <li><span class="bullet-xp">▶</span> <strong>Arreglos & Estructuras:</strong> Vectores, matrices, manipulación de índices.</li>
                             </ul>
                             <div class="topic-footer">
                                 <span class="lang-pill">C++</span>
@@ -317,7 +317,7 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: REVIEWS Y CAPTURAS DE COMPAÑEROS -->
+                <!-- SECCIÓN: REVIEWS Y CAPTURAS DE COMPAÑEROS (SLIDER ESCALABLE HORIZONTAL) -->
                 <section class="reviews-section" id="reviews-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">OPINIONES DE COMPAÑEROS</span>
@@ -327,41 +327,67 @@
                     <div class="reviews-container xp-inset">
                         <div class="reviews-notice">
                             <span class="notice-icon">💬</span>
-                            <span>Espacio para capturas de pantalla de compañeros sobre las clases y explicaciones.</span>
+                            <span>Deslizá hacia los lados ◄ ► para ver más capturas reales de chats con alumnos.</span>
                         </div>
 
-                        <div class="reviews-grid">
-                            <!-- Captura 1 -->
-                            <div class="review-card">
-                                <div class="review-header-xp">
-                                    <span class="rev-file">[CHAT_WHATSAPP_01.PNG]</span>
-                                    <span class="rev-status">✔ APROBADO</span>
-                                </div>
-                                <div class="review-body">
-                                    <div class="chat-bubble classmate">
-                                        <p>"Che Jon, mil gracias posta! Entendí en 1 hora de lista enlazada lo que no entendí en todo el cuatrimestre. Aprobé el parcial!"</p>
-                                        <span class="chat-time">19:42</span>
+                        <!-- CAROUSEL SLIDER ESCALABLE -->
+                        <div class="reviews-slider-wrapper">
+                            <button class="slider-arrow arrow-left" id="prevReviewBtn" title="Anterior">◄</button>
+
+                            <div class="reviews-track" id="reviewsTrack">
+                                
+                                <!-- CAPTURA REAL 1: SOL -->
+                                <div class="review-slide xp-window">
+                                    <div class="xp-title-bar small">
+                                        <span class="rev-file">📷 Chat_Sol_WhatsApp.png</span>
+                                        <span class="rev-status">✔ APROBADO</span>
                                     </div>
-                                    <div class="chat-bubble tutor">
-                                        <p>"Grande!! Sabía que lo ibas a sacar. A meterle para el final ahora 💪"</p>
-                                        <span class="chat-time">19:44</span>
+                                    <div class="review-slide-body">
+                                        <img src="img/review_sol.jpg" alt="Captura WhatsApp Reseña Sol" class="review-img">
                                     </div>
                                 </div>
+
+                                <!-- CAPTURA / REVIEWS ADICIONALES (FORMATO ESCALABLE) -->
+                                <div class="review-slide xp-window">
+                                    <div class="xp-title-bar small">
+                                        <span class="rev-file">💬 Chat_Pilas_Estructuras.png</span>
+                                        <span class="rev-status">✔ RECOMENDADO</span>
+                                    </div>
+                                    <div class="review-slide-body chat-mock">
+                                        <div class="chat-bubble classmate">
+                                            <p>"Che Jon, mil gracias posta! Entendí en 1 hora de lista enlazada lo que no entendí en todo el cuatrimestre. Aprobé el parcial!"</p>
+                                            <span class="chat-time">19:42 PM</span>
+                                        </div>
+                                        <div class="chat-bubble tutor">
+                                            <p>"Grande!! Sabía que lo ibas a sacar. A meterle para el final ahora 💪"</p>
+                                            <span class="chat-time">19:44 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="review-slide xp-window">
+                                    <div class="xp-title-bar small">
+                                        <span class="rev-file">💬 Chat_POO_Examen.png</span>
+                                        <span class="rev-status">✔ RECOMENDADO</span>
+                                    </div>
+                                    <div class="review-slide-body chat-mock">
+                                        <div class="chat-bubble classmate">
+                                            <p>"Genio Jon, la forma en que lo explicaste con el pizarrón digital y el diagrama en Obsidian me salvó la vida en POO."</p>
+                                            <span class="chat-time">21:15 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <!-- Captura 2 -->
-                            <div class="review-card">
-                                <div class="review-header-xp">
-                                    <span class="rev-file">[CHAT_WHATSAPP_02.PNG]</span>
-                                    <span class="rev-status">✔ RECOMENDADO</span>
-                                </div>
-                                <div class="review-body">
-                                    <div class="chat-bubble classmate">
-                                        <p>"Genio Jon, la forma en que lo explicaste con el pizarrón digital y el diagrama me salvó la vida en POO."</p>
-                                        <span class="chat-time">21:15</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="slider-arrow arrow-right" id="nextReviewBtn" title="Siguiente">►</button>
+                        </div>
+
+                        <!-- INDICADORES / DOTS DEL CAROUSEL -->
+                        <div class="slider-dots" id="reviewsDots">
+                            <span class="dot-indicator active" data-index="0"></span>
+                            <span class="dot-indicator" data-index="1"></span>
+                            <span class="dot-indicator" data-index="2"></span>
                         </div>
                     </div>
                 </section>
@@ -372,7 +398,7 @@
                 <section class="calculator-section" id="calculator-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">CALCULADOR DE PRECIO</span>
-                        <h2>💎 Precios, Modalidades y Calculadora</h2>
+                        <h2>💎 Precios, Modalidades</h2>
                     </div>
 
                     <!-- Grid de Tarjetas de Precios -->

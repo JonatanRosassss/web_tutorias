@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HYW_JON TUTORÍAS - SCRIPT.JS v1.2
-   Lógica interactiva de la Calculadora, Reloj XP, Menú Inicio y Partículas DS
+   HYW_JON TUTORÍAS - SCRIPT.JS v1.3
+   Lógica interactiva de Calculadora, Reloj XP, Slider de Reseñas y Partículas DS
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -103,7 +103,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. ANIMACIÓN DE PARTÍCULAS / EMBERS (DARK SOULS BONFIRE)
+    // 5. SLIDER ESCALABLE HORIZONTAL DE REVIEWS
+    const reviewsTrack = document.getElementById('reviewsTrack');
+    const prevReviewBtn = document.getElementById('prevReviewBtn');
+    const nextReviewBtn = document.getElementById('nextReviewBtn');
+    const dots = document.querySelectorAll('.dot-indicator');
+
+    if (reviewsTrack && prevReviewBtn && nextReviewBtn) {
+        const slideWidth = 340; // Ancho aproximado por slide con gap
+
+        prevReviewBtn.addEventListener('click', () => {
+            reviewsTrack.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+        });
+
+        nextReviewBtn.addEventListener('click', () => {
+            reviewsTrack.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        });
+
+        // Actualizar dots según scroll
+        reviewsTrack.addEventListener('scroll', () => {
+            const scrollPos = reviewsTrack.scrollLeft;
+            const activeIndex = Math.round(scrollPos / slideWidth);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        });
+
+        // Click en los dots para ir directamente al slide
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                reviewsTrack.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+            });
+        });
+    }
+
+    // 6. ANIMACIÓN DE PARTÍCULAS / EMBERS (DARK SOULS BONFIRE)
     const canvas = document.getElementById('emberCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -158,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateEmbers();
     }
 
-    // 6. CONTROLES SIMULADOS DE VENTANA XP
+    // 7. CONTROLES SIMULADOS DE VENTANA XP
     const winClose = document.querySelector('.win-close');
     const mainWindow = document.getElementById('mainWindow');
     if (winClose && mainWindow) {
