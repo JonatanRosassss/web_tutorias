@@ -13,13 +13,10 @@
 </head>
 <body>
 
-    <!-- Canvas para Partículas de Ceniza / Embers tipo Dark Souls -->
     <canvas id="emberCanvas"></canvas>
-
-    <!-- Fondo Manga Hatching Overlay -->
     <div class="manga-overlay"></div>
 
-    <!-- Barra de Tareas Estilo Windows XP (Taskbar inferior) -->
+    <!-- Barra de tareas inferior XP -->
     <div class="xp-taskbar">
         <button class="xp-start-btn" id="startBtn">
             <span class="xp-flag">❖</span>
@@ -37,13 +34,13 @@
             </div>
         </div>
         <div class="xp-tray">
-            <span class="bonfire-indicator" title="Hoguera encendida (Bonfire Lit)">🔥</span>
+            <span class="bonfire-indicator" title="Hoguera encendida">🔥</span>
             <span class="sound-icon">🔊</span>
             <span id="xpClock">19:30</span>
         </div>
     </div>
 
-    <!-- Menú Inicio XP Desplegable -->
+    <!-- Menú inicio desplegable -->
     <div class="xp-start-menu" id="startMenu">
         <div class="start-menu-sidebar">
             <div class="user-avatar">JON</div>
@@ -64,12 +61,9 @@
         </div>
     </div>
 
-    <!-- Contenedor Principal de Escritorio / App -->
     <main class="desktop-container">
 
-        <!-- VENTANA PRINCIPAL (Windows XP + Dark Souls Theme) -->
         <div class="xp-window main-window" id="mainWindow">
-            <!-- Barra de Título XP -->
             <div class="xp-title-bar">
                 <div class="xp-title-text">
                     <span class="window-icon">⚔️</span>
@@ -82,7 +76,6 @@
                 </div>
             </div>
 
-            <!-- Menú Superior XP (File Edit View...) -->
             <div class="xp-menu-bar">
                 <span><u>A</u>rchivo</span>
                 <span><u>M</u>aterias</span>
@@ -92,10 +85,8 @@
                 <span class="souls-level-tag">PROMEDIO 9.10 TUTOR</span>
             </div>
 
-            <!-- Cuerpo Interno de la Ventana -->
             <div class="xp-window-body">
 
-                <!-- HUD Dark Souls Superior -->
                 <div class="souls-hud">
                     <div class="hud-bars">
                         <div class="hud-bar hp-bar">
@@ -120,7 +111,6 @@
                     </div>
                 </div>
 
-                <!-- HERO SECTION con Estética Manga "REAL" (Globo de Diálogo Dramático + Hook) -->
                 <section class="hero-section" id="hero-section">
                     <div class="manga-speech-bubble">
                         <h1 class="hero-title">
@@ -144,7 +134,6 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: DOS ENFOQUES DE CLASE -->
                 <section class="approaches-section" id="approaches-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">MODALIDAD DE TRABAJO</span>
@@ -174,7 +163,6 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: MI BIOGRAFÍA & STATS DE PERSONAJE -->
                 <section class="stats-section" id="stats-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">ANTECEDENTES</span>
@@ -182,7 +170,6 @@
                     </div>
 
                     <div class="character-grid">
-                        <!-- Card Estilo Menú de Inventario XP / DS -->
                         <div class="character-card">
                             <div class="card-header-xp">
                                 <span>[STATS_VIEWER.DLL]</span>
@@ -223,7 +210,6 @@
                             </div>
                         </div>
 
-                        <!-- Card de Filosofía & Dinámica -->
                         <div class="manga-panel-card">
                             <div class="manga-panel-title">METODOLOGÍA</div>
                             <blockquote class="manga-quote">
@@ -241,7 +227,6 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: MATERIAS & CONTENIDOS (SKILL TREES) -->
                 <section class="topics-section" id="topics-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">RUTA DE TRABAJO</span>
@@ -250,7 +235,6 @@
 
                     <div class="topics-grid three-col">
 
-                        <!-- ÁRBOL 1: PROGRAMACIÓN BÁSICA E INTERMEDIA -->
                         <div class="topic-window xp-inset">
                             <div class="topic-header">
                                 <span class="topic-icon">⚔️</span>
@@ -271,7 +255,6 @@
                             </div>
                         </div>
 
-                        <!-- ÁRBOL 2: ESTRUCTURA DE DATOS -->
                         <div class="topic-window xp-inset highlight-ds">
                             <div class="topic-header">
                                 <span class="topic-icon">🧠</span>
@@ -292,7 +275,6 @@
                             </div>
                         </div>
 
-                        <!-- ÁRBOL 3: POO (PROGRAMACIÓN ORIENTADA A OBJETOS) -->
                         <div class="topic-window xp-inset">
                             <div class="topic-header">
                                 <span class="topic-icon">🏗️</span>
@@ -317,7 +299,6 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: REVIEWS Y CAPTURAS DE COMPAÑEROS (SLIDER ESCALABLE HORIZONTAL) -->
                 <section class="reviews-section" id="reviews-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">OPINIONES DE COMPAÑEROS</span>
@@ -330,13 +311,12 @@
                             <span>Deslizá hacia los lados ◄ ► para ver más capturas reales de chats con alumnos.</span>
                         </div>
 
-                        <!-- CAROUSEL SLIDER ESCALABLE -->
                         <div class="reviews-slider-wrapper">
                             <button class="slider-arrow arrow-left" id="prevReviewBtn" title="Anterior">◄</button>
 
                             <div class="reviews-track" id="reviewsTrack">
                                 
-                                <!-- CAPTURA REAL 1: SOL -->
+                                <!-- ACÁ VAN LAS SIGUIENTES IMÁGENES DE CAPTURAS DE WHATSAPP -->
                                 <div class="review-slide xp-window">
                                     <div class="xp-title-bar small">
                                         <span class="rev-file">📷 Chat_Sol_WhatsApp.png</span>
@@ -347,45 +327,11 @@
                                     </div>
                                 </div>
 
-                                <!-- CAPTURA / REVIEWS ADICIONALES (COMENTADAS HASTA AGREGAR MÁS REALES) -->
-                                <!--
-                                <div class="review-slide xp-window">
-                                    <div class="xp-title-bar small">
-                                        <span class="rev-file">💬 Chat_Pilas_Estructuras.png</span>
-                                        <span class="rev-status">✔ RECOMENDADO</span>
-                                    </div>
-                                    <div class="review-slide-body chat-mock">
-                                        <div class="chat-bubble classmate">
-                                            <p>"Che Jon, mil gracias posta! Entendí en 1 hora de lista enlazada lo que no entendí en todo el cuatrimestre. Aprobé el parcial!"</p>
-                                            <span class="chat-time">19:42 PM</span>
-                                        </div>
-                                        <div class="chat-bubble tutor">
-                                            <p>"Grande!! Sabía que lo ibas a sacar. A meterle para el final ahora 💪"</p>
-                                            <span class="chat-time">19:44 PM</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="review-slide xp-window">
-                                    <div class="xp-title-bar small">
-                                        <span class="rev-file">💬 Chat_POO_Examen.png</span>
-                                        <span class="rev-status">✔ RECOMENDADO</span>
-                                    </div>
-                                    <div class="review-slide-body chat-mock">
-                                        <div class="chat-bubble classmate">
-                                            <p>"Genio Jon, la forma en que lo explicaste con el pizarrón digital y el diagrama en Obsidian me salvó la vida en POO."</p>
-                                            <span class="chat-time">21:15 PM</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                -->
-
                             </div>
 
                             <button class="slider-arrow arrow-right" id="nextReviewBtn" title="Siguiente">►</button>
                         </div>
 
-                        <!-- INDICADORES / DOTS DEL CAROUSEL -->
                         <div class="slider-dots" id="reviewsDots">
                             <span class="dot-indicator active" data-index="0"></span>
                         </div>
@@ -394,17 +340,14 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: PRECIOS, PLANES Y CALCULADORA DINÁMICA XP -->
                 <section class="calculator-section" id="calculator-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">CALCULADOR DE PRECIO</span>
                         <h2>💎 Precios, Modalidades</h2>
                     </div>
 
-                    <!-- Grid de Tarjetas de Precios -->
                     <div class="pricing-cards-grid">
 
-                        <!-- Card 1: Virtual Individual -->
                         <div class="pricing-card">
                             <div class="p-card-badge">MÁS PEDIDO</div>
                             <h3 class="p-card-title">🌐 Virtual Individual (1 a 1)</h3>
@@ -418,7 +361,6 @@
                             </ul>
                         </div>
 
-                        <!-- Card 2: Presencial Individual -->
                         <div class="pricing-card focus-card">
                             <div class="p-card-badge gold">100% PRÁCTICO</div>
                             <h3 class="p-card-title">🏫 Presencial Individual</h3>
@@ -432,7 +374,6 @@
                             </ul>
                         </div>
 
-                        <!-- Card 3: PLAN COLECTIVO / GRUPAL (AHORRO) -->
                         <div class="pricing-card group-card">
                             <div class="p-card-badge group">PLAN COLECTIVO / AMIGOS</div>
                             <h3 class="p-card-title">👥 Plan Colectivo (Grupal)</h3>
@@ -448,7 +389,6 @@
 
                     </div>
 
-                    <!-- CALCULADORA EN VENTANA INTERACTIVA XP -->
                     <div class="xp-window calc-window">
                         <div class="xp-title-bar small">
                             <span>🧮 Calculadora_de_Presupuesto.exe</span>
@@ -499,7 +439,6 @@
 
                 <hr class="xp-divider">
 
-                <!-- SECCIÓN: GARANTÍAS Y PREGUNTAS FRECUENTES (NPC DIALOGUES) -->
                 <section class="faq-section" id="faq-section">
                     <div class="section-header-ds">
                         <span class="ds-subtitle">NPC DIALOGUES & GUARANTEES</span>
@@ -553,7 +492,6 @@
                     </div>
                 </section>
 
-                <!-- BANNER FINAL "ACA ESTA LA SOLUCION" -->
                 <div class="victory-banner">
                     <div class="victory-title">ACA ESTA LA SOLUCION</div>
                     <p class="victory-text">Tu parcial/final aprobado está a un mensaje de distancia.</p>
@@ -562,9 +500,8 @@
                     </a>
                 </div>
 
-            </div> <!-- /xp-window-body -->
+            </div>
 
-            <!-- Status Bar Inferior XP -->
             <div class="xp-status-bar">
                 <span>Estado: Sistema Listo</span>
                 <span>Conexión: WhatsApp +541173690564</span>

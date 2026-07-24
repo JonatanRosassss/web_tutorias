@@ -1,11 +1,6 @@
-/* ==========================================================================
-   HYW_JON TUTORÍAS - SCRIPT.JS v1.3
-   Lógica interactiva de Calculadora, Reloj XP, Slider de Reseñas y Partículas DS
-   ========================================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. RELOJ DE LA BARRA DE TAREAS WINDOWS XP
+    // Reloj de la barra de tareas
     const xpClock = document.getElementById('xpClock');
     function updateClock() {
         const now = new Date();
@@ -18,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
     setInterval(updateClock, 10000);
 
-    // 2. TOGGLE MENÚ INICIO XP
+    // Menú Inicio
     const startBtn = document.getElementById('startBtn');
     const startMenu = document.getElementById('startMenu');
     
@@ -35,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. CALCULADORA INTERACTIVA DE PRESUPUESTO
+    // Calculadora de presupuesto
     const calcMode = document.getElementById('calcMode');
     const calcHours = document.getElementById('calcHours');
     const calcStudents = document.getElementById('calcStudents');
@@ -80,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         totalAmount.textContent = `$${total.toLocaleString('es-AR')} ARS`;
         calcBreakdown.textContent = breakdownText;
 
-        // Actualizar URL del botón de WhatsApp
         const encodedMsg = encodeURIComponent(whatsappMsg);
         wsReserveBtn.href = `https://wa.me/541173690564?text=${encodedMsg}`;
     }
@@ -91,11 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         calcStudents.addEventListener('input', calculateBudget);
         if (calcTopic) calcTopic.addEventListener('input', calculateBudget);
         
-        // Ejecutar primer cálculo inicial
         calculateBudget();
     }
 
-    // 4. ACCORDION FAQ (NPC DIALOGUES)
+    // Preguntas frecuentes (FAQ)
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -103,14 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. SLIDER ESCALABLE HORIZONTAL DE REVIEWS
+    // Slider horizontal de reseñas
     const reviewsTrack = document.getElementById('reviewsTrack');
     const prevReviewBtn = document.getElementById('prevReviewBtn');
     const nextReviewBtn = document.getElementById('nextReviewBtn');
     const dots = document.querySelectorAll('.dot-indicator');
 
     if (reviewsTrack && prevReviewBtn && nextReviewBtn) {
-        const slideWidth = 340; // Ancho aproximado por slide con gap
+        const slideWidth = 340;
 
         prevReviewBtn.addEventListener('click', () => {
             reviewsTrack.scrollBy({ left: -slideWidth, behavior: 'smooth' });
@@ -120,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             reviewsTrack.scrollBy({ left: slideWidth, behavior: 'smooth' });
         });
 
-        // Actualizar dots según scroll
         reviewsTrack.addEventListener('scroll', () => {
             const scrollPos = reviewsTrack.scrollLeft;
             const activeIndex = Math.round(scrollPos / slideWidth);
@@ -129,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Click en los dots para ir directamente al slide
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 reviewsTrack.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
@@ -137,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. ANIMACIÓN DE PARTÍCULAS / EMBERS (DARK SOULS BONFIRE)
+    // Partículas de ceniza de fondo
     const canvas = document.getElementById('emberCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -192,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateEmbers();
     }
 
-    // 7. CONTROLES SIMULADOS DE VENTANA XP
+    // Botón cerrar ventana XP
     const winClose = document.querySelector('.win-close');
     const mainWindow = document.getElementById('mainWindow');
     if (winClose && mainWindow) {
