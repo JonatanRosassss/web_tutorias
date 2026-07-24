@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyer Tutorías | Diseño Minimalista Apple macOS (Jonatan Rosas)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Cinzel:wght@700;900&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e2e8f0;
+            color: #0f172a;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* FLYER POSTER CONTAINER (MINIMALISTA APPLE MACOS) */
+        .flyer-poster {
+            width: 500px;
+            height: 720px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 1. APPLE MACOS WINDOW TOP FRAME */
+        .macos-window {
+            background-color: #0f1015;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .macos-titlebar {
+            background-color: #1a1c23;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        /* TRAFFIC LIGHT BUTTONS */
+        .traffic-lights {
+            display: flex;
+            gap: 7px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ff5f56; border: 1px solid #e0443e; }
+        .dot-yellow { background-color: #ffbd2e; border: 1px solid #dea123; }
+        .dot-green { background-color: #27c93f; border: 1px solid #1aab29; }
+
+        .macos-window-title {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+        }
+
+        .macos-body {
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .hero-banner-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #ff5500;
+            line-height: 1.15;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 85, 0, 0.35);
+        }
+
+        /* 2. SUBTITLE */
+        .sub-header {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            text-align: center;
+            margin: 16px 0 12px 0;
+            letter-spacing: -0.3px;
+        }
+
+        /* 3. MINIMALIST TOPICS CARDS */
+        .topics-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .topic-pill {
+            background-color: #0f1015;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .topic-pill:hover {
+            transform: translateY(-2px);
+        }
+
+        .bullet-dot {
+            color: #ff5500;
+            font-size: 1.3rem;
+            line-height: 0;
+        }
+
+        .topic-name {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.2px;
+        }
+
+        .topic-name span.highlight {
+            color: #ff5500;
+        }
+
+        /* 4. APPLE BOTTOM CONTACT CARD */
+        .contact-card-apple {
+            background-color: #0f1015;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-box-apple {
+            background-color: #ffffff;
+            padding: 6px;
+            border-radius: 10px;
+            width: 95px;
+            height: 95px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-box-apple img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .contact-text-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .cta-url-apple {
+            color: #ff5500;
+            font-size: 1.02rem;
+            font-weight: 800;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .cta-ws-apple {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-pilar {
+            display: inline-block;
+            background-color: rgba(255, 85, 0, 0.15);
+            color: #ff5500;
+            border: 1px solid #ff5500;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-top: 2px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLYER POSTER CONTAINER -->
+    <div class="flyer-poster">
+
+        <!-- 1. APPLE MACOS WINDOW TOP FRAME -->
+        <div class="macos-window">
+            <div class="macos-titlebar">
+                <div class="traffic-lights">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="macos-window-title">Tutorías_Pilar.app</div>
+            </div>
+            <div class="macos-body">
+                <h1 class="hero-banner-text">TUTORÍAS DE PROGRAMACIÓN</h1>
+            </div>
+        </div>
+
+        <!-- 2. SUBTITLE -->
+        <h2 class="sub-header">Exclusivo para chicos de Univ. de Pilar</h2>
+
+        <!-- 3. MINIMALIST TOPICS CARDS (SIN MANGA) -->
+        <div class="topics-stack">
+            <div class="topic-pill">
+                <span class="bullet-dot">•</span>
+                <span class="topic-name"><span class="highlight">Programación</span> Básica e Intermedia</span>
+            </div>
+            <div class="topic-pill">
+                <span class="bullet-dot">•</span>
+                <span class="topic-name"><span class="highlight">POO</span> (Orientada a Objetos)</span>
+            </div>
+            <div class="topic-pill">
+                <span class="bullet-dot">•</span>
+                <span class="topic-name"><span class="highlight">Estructura de Datos</span> & Algoritmos</span>
+            </div>
+        </div>
+
+        <!-- 4. APPLE BOTTOM CONTACT CARD -->
+        <div class="contact-card-apple">
+            <div class="qr-box-apple">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jonatanrosassss.github.io/web_tutorias/" alt="QR Code Web Tutorias">
+            </div>
+            <div class="contact-text-box">
+                <a href="https://jonatanrosassss.github.io/web_tutorias/" target="_blank" class="cta-url-apple">jonatanrosassss.github.io/web_tutorias</a>
+                <div class="cta-ws-apple">WhatsApp: 11 7369-0564</div>
+                <span class="badge-pilar">Jonatan Rosas • Score 9.10</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
