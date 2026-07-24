@@ -60,22 +60,25 @@
             position: relative;
         }
 
-        /* TRAFFIC LIGHT BUTTONS */
+        /* TRAFFIC LIGHT BUTTONS (BOLITAS DE COLORES MACOS) */
         .traffic-lights {
             display: flex;
-            gap: 7px;
+            gap: 6px;
+            align-items: center;
             z-index: 2;
         }
 
         .dot {
-            width: 11px;
-            height: 11px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .dot-red { background-color: #ff5f56; border: 1px solid #e0443e; }
-        .dot-yellow { background-color: #ffbd2e; border: 1px solid #dea123; }
-        .dot-green { background-color: #27c93f; border: 1px solid #1aab29; }
+        .dot-red { background-color: #ff5f56; border: 1px solid #e0443e; box-shadow: 0 0 4px rgba(255, 95, 86, 0.4); }
+        .dot-yellow { background-color: #ffbd2e; border: 1px solid #dea123; box-shadow: 0 0 4px rgba(255, 189, 46, 0.4); }
+        .dot-green { background-color: #27c93f; border: 1px solid #1aab29; box-shadow: 0 0 4px rgba(39, 201, 63, 0.4); }
 
         .macos-window-title {
             position: absolute;
@@ -114,7 +117,7 @@
             letter-spacing: -0.3px;
         }
 
-        /* 3. MINIMALIST TOPICS CARDS CON VENTANITAS MACOS */
+        /* 3. MINIMALIST TOPICS CARDS CON VENTANITAS MACOS Y TRAFFIC LIGHTS */
         .topics-stack {
             display: flex;
             flex-direction: column;
@@ -141,22 +144,20 @@
 
         .mini-window-title {
             font-size: 0.72rem;
-            color: #64748b;
+            color: #94a3b8;
             font-weight: 700;
             margin-left: 10px;
         }
 
         .topic-pill-body {
-            padding: 10px 16px;
+            padding: 11px 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .bullet-dot {
-            color: #ff5500;
-            font-size: 1.2rem;
-            line-height: 0;
+        .inline-lights {
+            margin-right: 4px;
         }
 
         .topic-name {
@@ -259,7 +260,7 @@
         <!-- 2. SUBTITLE -->
         <h2 class="sub-header">Para chicos de Univ. de Pilar</h2>
 
-        <!-- 3. MINIMALIST TOPICS CARDS CON EFECTO VENTANITA MACOS -->
+        <!-- 3. MINIMALIST TOPICS CARDS CON VENTANITAS MACOS Y BOLITAS TRAFFIC LIGHTS -->
         <div class="topics-stack">
             <div class="topic-pill-window">
                 <div class="mini-titlebar">
@@ -271,7 +272,11 @@
                     <span class="mini-window-title">Prog_Basica.app</span>
                 </div>
                 <div class="topic-pill-body">
-                    <span class="bullet-dot">•</span>
+                    <div class="traffic-lights inline-lights">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
                     <span class="topic-name"><span class="highlight">Programación</span> Básica e Intermedia</span>
                 </div>
             </div>
@@ -286,7 +291,11 @@
                     <span class="mini-window-title">POO.app</span>
                 </div>
                 <div class="topic-pill-body">
-                    <span class="bullet-dot">•</span>
+                    <div class="traffic-lights inline-lights">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
                     <span class="topic-name"><span class="highlight">POO</span> (Orientada a Objetos)</span>
                 </div>
             </div>
@@ -301,7 +310,11 @@
                     <span class="mini-window-title">Estructura_Datos.app</span>
                 </div>
                 <div class="topic-pill-body">
-                    <span class="bullet-dot">•</span>
+                    <div class="traffic-lights inline-lights">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
                     <span class="topic-name"><span class="highlight">Estructura de Datos</span> & Algoritmos</span>
                 </div>
             </div>
