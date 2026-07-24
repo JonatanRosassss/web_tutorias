@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyer Tutorías | Versión Alto Contraste (Jonatan Rosas)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=VT323&family=Plus+Jakarta+Sans:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e9ecef;
+            color: #111;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* POSTER ALTO CONTRASTE (Fondo Blanco / Manga Canvas) */
+        .flyer-poster {
+            width: 500px;
+            height: 700px;
+            background-color: #ffffff;
+            border: 5px solid #000000;
+            border-radius: 14px;
+            box-shadow: 12px 12px 0px #000000, 0 20px 40px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03) 2px, transparent 2px, transparent 8px);
+        }
+
+        /* WINDOWS XP HEADER BAR (CONTRARRESTA EL FONDO CLARO) */
+        .flyer-header {
+            background: linear-gradient(180deg, #0058e6 0%, #2576f7 100%);
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-weight: 900;
+            font-size: 0.95rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            border-bottom: 3px solid #000;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .win-controls {
+            display: flex;
+            gap: 4px;
+        }
+
+        .win-btn {
+            width: 22px;
+            height: 22px;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .win-min { background: #3c8df6; }
+        .win-close { background: #e76646; }
+
+        /* BODY CONTENT */
+        .flyer-body {
+            padding: 26px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* SOULS HUD TAG EN TARJETA NEGRA */
+        .souls-hud-tag {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0e0f14;
+            border: 2px solid #000;
+            padding: 10px 16px;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0px #ff5500;
+        }
+
+        .tag-text {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            color: #ff5500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .tag-level {
+            font-family: 'VT323', monospace;
+            background-color: #d4af37;
+            color: #000;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 1.15rem;
+        }
+
+        /* TARJETA NEGRA HERO (SPEECH BUBBLE HIGH CONTRAST) */
+        .manga-box-dark {
+            background-color: #0e0f14;
+            color: #ffffff;
+            padding: 22px 20px;
+            border: 3px solid #000;
+            border-radius: 10px;
+            box-shadow: 6px 6px 0px #ff5500, 10px 10px 0px #000;
+            margin: 18px 0;
+            text-align: center;
+        }
+
+        .manga-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.65rem;
+            font-weight: 900;
+            line-height: 1.25;
+            color: #ff5500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 85, 0, 0.4);
+        }
+
+        .manga-subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .manga-highlight {
+            font-family: 'Permanent Marker', cursive;
+            color: #ff5500;
+            font-size: 1.25rem;
+        }
+
+        /* TOPICS EN TARJETA NEGRA CON LETRAS NARANJAS */
+        .topics-box-dark {
+            background-color: #0e0f14;
+            border: 3px solid #000;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .topics-label {
+            font-family: 'VT323', monospace;
+            color: #ff5500;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 1px solid #333;
+            padding-bottom: 4px;
+        }
+
+        .topics-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .topics-list li {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bullet-icon {
+            color: #ff5500;
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER / CTA (TARJETA NEGRA CON QR DESTACADO) */
+        .flyer-footer-dark {
+            background-color: #0e0f14;
+            border: 3px solid #000;
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 6px 6px 0px #ff5500;
+        }
+
+        .qr-box {
+            width: 85px;
+            height: 85px;
+            background-color: #ffffff;
+            padding: 5px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 2px solid #000;
+        }
+
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cta-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .cta-action {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #ff5500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-url {
+            font-family: 'VT323', monospace;
+            font-size: 1.15rem;
+            color: #4ade80;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .cta-ws {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .ws-badge {
+            background-color: #2e7d32;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLYER POSTER CONTAINER (ALTO CONTRASMENTE) -->
+    <div class="flyer-poster">
+        <!-- WINDOWS XP HEADER BAR -->
+        <div class="flyer-header">
+            <div class="header-title">
+                <span>⚔️ hyw_jon.exe - [Tutorías Univ. Pilar]</span>
+            </div>
+            <div class="win-controls">
+                <span class="win-btn win-min">_</span>
+                <span class="win-btn win-close">X</span>
+            </div>
+        </div>
+
+        <!-- BODY CONTENT -->
+        <div class="flyer-body">
+
+            <!-- SOULS HUD TAG EN TARJETA NEGRA -->
+            <div class="souls-hud-tag">
+                <span class="tag-text">🔥 EXCLUSIVO UNIV. DE PILAR</span>
+                <span class="tag-level">SCORE 9.10</span>
+            </div>
+
+            <!-- MANGA HERO SPEECH BUBBLE EN TARJETA NEGRA CON TIPOGRAFÍA NARANJA -->
+            <div class="manga-box-dark">
+                <h1 class="manga-title">TUTORÍAS DE PROGRAMACIÓN</h1>
+                <p class="manga-subtitle">
+                    "¿Te cuesta entender a los profes o te sentís atrasado? <span class="manga-highlight">No pasa nada.</span>"
+                </p>
+            </div>
+
+            <!-- TOPICS LIST EN TARJETA NEGRA -->
+            <div class="topics-box-dark">
+                <span class="topics-label">RUTA DE TEMAS PRINCIPALES:</span>
+                <ul class="topics-list">
+                    <li><span class="bullet-icon">▶</span> Programación Básica e Intermedia</li>
+                    <li><span class="bullet-icon">▶</span> POO (Programación Orientada a Objetos)</li>
+                    <li><span class="bullet-icon">▶</span> Estructura de Datos & Algoritmos</li>
+                </ul>
+            </div>
+
+            <!-- FOOTER CTA EN TARJETA NEGRA CON SOMBRA NARANJA -->
+            <div class="flyer-footer-dark">
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://jonatanrosassss.github.io/web_tutorias/" alt="QR Web Tutorias">
+                </div>
+                <div class="cta-info">
+                    <span class="cta-action">Escaneá el QR o ingresá a la web:</span>
+                    <span class="cta-url">jonatanrosassss.github.io/web_tutorias</span>
+                    <div class="cta-ws">
+                        <span>WhatsApp:</span>
+                        <span class="ws-badge">📱 11 7369-0564</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
