@@ -52,6 +52,7 @@ html {
 }
 
 body {
+    background-color: #090a0e;
     background-color: var(--ds-bg-dark);
     color: #e2e8f0;
     font-family: var(--font-body);
@@ -202,6 +203,7 @@ body {
 
 /* Body Interno de la Ventana */
 .xp-window-body {
+    background-color: #090a0e;
     background-color: var(--ds-bg-dark);
     color: #e2e8f0;
     padding: 24px;
