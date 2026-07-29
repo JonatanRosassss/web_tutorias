@@ -29,7 +29,7 @@
         /* POSTER ALTO CONTRASTE (Fondo Blanco / Manga Canvas) */
         .flyer-poster {
             width: 500px;
-            height: 700px;
+            height: 720px;
             background-color: #ffffff;
             border: 5px solid #000000;
             border-radius: 14px;
@@ -41,7 +41,7 @@
             background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03) 2px, transparent 2px, transparent 8px);
         }
 
-        /* WINDOWS XP HEADER BAR (CONTRARRESTA EL FONDO CLARO) */
+        /* WINDOWS XP HEADER BAR */
         .flyer-header {
             background: linear-gradient(180deg, #0058e6 0%, #2576f7 100%);
             padding: 10px 14px;
@@ -83,7 +83,7 @@
 
         /* BODY CONTENT */
         .flyer-body {
-            padding: 26px 22px;
+            padding: 24px 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -130,15 +130,25 @@
             border: 3px solid #000;
             border-radius: 10px;
             box-shadow: 6px 6px 0px #ff5500, 10px 10px 0px #000;
-            margin: 18px 0;
+            margin: 14px 0;
             text-align: center;
+        }
+
+        .manga-hero-question {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+            margin-bottom: 8px;
         }
 
         .manga-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.65rem;
+            font-size: 1.7rem;
             font-weight: 900;
-            line-height: 1.25;
+            line-height: 1.2;
             color: #ff5500;
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -146,7 +156,7 @@
         }
 
         .manga-subtitle {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #f1f5f9;
         }
@@ -154,7 +164,7 @@
         .manga-highlight {
             font-family: 'Permanent Marker', cursive;
             color: #ff5500;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
         }
 
         /* TOPICS EN TARJETA NEGRA CON LETRAS NARANJAS */
@@ -163,7 +173,7 @@
             border: 3px solid #000;
             border-radius: 10px;
             padding: 16px 20px;
-            margin-bottom: 18px;
+            margin-bottom: 14px;
             box-shadow: 4px 4px 0px #000;
         }
 
@@ -290,15 +300,18 @@
 
             <!-- SOULS HUD TAG EN TARJETA NEGRA -->
             <div class="souls-hud-tag">
-                <span class="tag-text">🔥 EXCLUSIVO UNIV. DE PILAR</span>
+                <span class="tag-text">Para chicos de Univ. de Pilar</span>
                 <span class="tag-level">SCORE 9.10</span>
             </div>
 
-            <!-- MANGA HERO SPEECH BUBBLE EN TARJETA NEGRA CON TIPOGRAFÍA NARANJA -->
+            <!-- MANGA HERO SPEECH BUBBLE EN TARJETA NEGRA CON MENSAJE DE INTEGRADOR / FINALES -->
             <div class="manga-box-dark">
+                <p class="manga-hero-question">
+                    ¿TE FUE MAL EN EL INTEGRADOR Y TENÉS QUE RENDIR EL FINAL?
+                </p>
                 <h1 class="manga-title">TUTORÍAS DE PROGRAMACIÓN</h1>
                 <p class="manga-subtitle">
-                    "¿Te cuesta entender a los profes o te sentís atrasado? <span class="manga-highlight">No pasa nada.</span>"
+                    "<span class="manga-highlight">NO PASA NADA.</span> Repasamos los temas hasta que los entiendas y apruebes."
                 </p>
             </div>
 
